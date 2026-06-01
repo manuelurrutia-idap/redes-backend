@@ -46,7 +46,7 @@ def delete_project(project_id: int, db: Session = Depends(database.get_db)):
 
 # --- Activities ---
 
-@app.post("/projects/{project_id}/activities/", response_model=schemas.Activity)
+@app.post("/projects/{project_id}/activities", response_model=schemas.Activity)
 def create_activity(project_id: int, activity: schemas.ActivityCreate, db: Session = Depends(database.get_db)):
     return crud.create_activity(db=db, activity=activity, project_id=project_id)
 
@@ -68,7 +68,7 @@ def delete_activity(activity_id: int, db: Session = Depends(database.get_db)):
 
 # --- Dependencies ---
 
-@app.post("/projects/{project_id}/dependencies/", response_model=schemas.Dependency)
+@app.post("/projects/{project_id}/dependencies", response_model=schemas.Dependency)
 def create_dependency(project_id: int, dependency: schemas.DependencyCreate, db: Session = Depends(database.get_db)):
     # Verify both activities exist and belong to the project
     from_act = crud.get_activity(db, dependency.from_activity_id)
@@ -86,7 +86,7 @@ def create_dependency(project_id: int, dependency: schemas.DependencyCreate, db:
         
     return crud.create_dependency(db=db, dependency=dependency, project_id=project_id)
 
-@app.get("/projects/{project_id}/dependencies/", response_model=list[schemas.Dependency])
+@app.get("/projects/{project_id}/dependencies", response_model=list[schemas.Dependency])
 def read_dependencies(project_id: int, db: Session = Depends(database.get_db)):
     return crud.get_dependencies(db, project_id=project_id)
 
