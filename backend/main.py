@@ -7,13 +7,17 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(title="Project Management API")
 
+# 1. Colocamos las URLs exactas de tus frontends
 origins = [
-    "https://redes-frontend-zyk5.onrender.com",
+    "https://redes-frontend-zjfl.onrender.com", # Tu URL actual
+    "https://redes-frontend-zyk5.onrender.com", # Tu URL anterior (por si acaso)
+    "http://localhost:5173", # Por si vuelves a probar en tu computadora
 ]
 
+# 2. Asignamos la variable 'origins' correctamente aquí:
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins, # <-- AQUÍ ESTABA EL ERROR
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
