@@ -28,7 +28,7 @@ app.add_middleware(
 def create_project(project: schemas.ProjectCreate, db: Session = Depends(database.get_db)):
     return crud.create_project(db=db, project=project)
 
-@app.get("/projects", response_model=list[schemas.Project])
+@app.get("/projects/", response_model=list[schemas.Project])
 def read_projects(skip: int = 0, limit: int = 100, db: Session = Depends(database.get_db)):
     return crud.get_projects(db, skip=skip, limit=limit)
 
