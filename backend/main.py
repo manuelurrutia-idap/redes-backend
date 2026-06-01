@@ -7,6 +7,10 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(title="Project Management API")
 
+origins = [
+    "https://redes-frontend-zyk5.onrender.com",
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
