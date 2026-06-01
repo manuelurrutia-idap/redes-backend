@@ -29,7 +29,7 @@ app.add_middleware(
 def create_project(project: schemas.ProjectCreate, db: Session = Depends(database.get_db)):
     return crud.create_project(db=db, project=project)
 
-@app.get("/projects/", response_model=list[schemas.Project])
+@app.get("/projects", response_model=list[schemas.Project])
 def read_projects(skip: int = 0, limit: int = 100, db: Session = Depends(database.get_db)):
     return crud.get_projects(db, skip=skip, limit=limit)
 
@@ -51,7 +51,7 @@ def delete_project(project_id: int, db: Session = Depends(database.get_db)):
 def create_activity(project_id: int, activity: schemas.ActivityCreate, db: Session = Depends(database.get_db)):
     return crud.create_activity(db=db, activity=activity, project_id=project_id)
 
-@app.get("/projects/{project_id}/activities/", response_model=list[schemas.Activity])
+@app.get("/projects/{project_id}/activities", response_model=list[schemas.Activity])
 def read_activities(project_id: int, db: Session = Depends(database.get_db)):
     return crud.get_activities(db, project_id=project_id)
 
