@@ -10,8 +10,7 @@ app = FastAPI(title="Project Management API")
 # 1. Colocamos las URLs exactas de tus frontends
 origins = [
     "https://redes-frontend-zjfl.onrender.com", # Tu URL actual
-    "https://redes-frontend-zyk5.onrender.com", # Tu URL anterior (por si acaso)
-    "http://localhost:5173", # Por si vuelves a probar en tu computadora
+    "https://redes-frontend-zyk5.onrender.com", # Tu URL anterior (por si acaso) # Por si vuelves a probar en tu computadora
 ]
 
 # 2. Asignamos la variable 'origins' correctamente aquí:
